@@ -2,6 +2,7 @@ package sk.pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import sk.selenium.elements.ResultsContainer;
 import org.openqa.selenium.support.FindBy;
 
 import java.util.ArrayList;
@@ -15,10 +16,16 @@ public class GooglePage extends Page {
     }
 
     @FindBy(name = "q")
-    private WebElement searchBox;
+    public WebElement searchBox;
 
     @FindBy(css = "div.r > a > h3")
-    private List<WebElement> results;
+    public List<WebElement> results;
+
+    @FindBy(xpath = "//div[@class='srg']//div[@class='g'][1]")
+    public ResultsContainer resultContainer;
+
+    @FindBy(xpath = "//div[@class='srg']//div[@class='g']")
+    public List<ResultsContainer> resultsContainer;
 
     public void searchFor(String text) {
         searchBox.sendKeys(text);
